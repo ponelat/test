@@ -8,12 +8,10 @@ GITHUB_URL=https://ponelat:$GH_TOKEN@github.com/ponelat/test.git
 git remote remove origin
 git remote add origin "$GITHUB_URL"
 
-git checkout -f master
-
 echo `date` >> touched
 
 # Delete bot_tested branch
-git branch -D --quiet bot_tested
+# git branch -D --quiet bot_tested
 git push origin :bot_tested
 
 # Recreate bot_tested branch
