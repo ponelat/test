@@ -8,6 +8,10 @@ GITHUB_URL=https://ponelat:$GH_TOKEN@github.com/ponelat/test.git
 git remote remove origin
 git remote add origin "$GITHUB_URL"
 
+# Give ourselves an identity
+git config --global user.email "travis@example.com"
+git config --global user.name "Travis-Ci.org"
+
 echo `date` >> touched
 
 # Delete bot_tested branch
