@@ -1,12 +1,12 @@
 # Bail on first error...
 set -e
 
-# $GITHUB_TOKEN=
-# $GITHUB_URL=https://ponelat:$GITHUB_TOKEN@github.com/ponelat/test
-# globals: $TRAVIS_BRANCH
+# globals: $TRAVIS_BRANCH, $GH_TOKEN
+# PS the following is a plain text password, delete before commiting or pushing
+GITHUB_URL=https://ponelat:$GH_TOKEN@github.com/ponelat/test.git
 
-# git remote rm origin
-# git remote add origin "$GITHUB_URL"
+git remote remove origin
+git remote add origin "$GITHUB_URL"
 
 git checkout -f master
 
