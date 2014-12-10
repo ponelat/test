@@ -3,4 +3,7 @@ node_js:
 - '0.10'
 branches:
   only:
-    - master
+  - master
+env:
+  global:
+    secure: MVro0YaE/VrNY9H8PrRJGSbzoORGH5znQi17iLVLOfnt5VEF2LPuIW+M2oLU1raciGXLtPHcHmdwOjHKJoLwvwP2BImBwA5C8OvCMUMvk3cmzNp6E5gs7A0PDnzAaWpvHbS/BZr1R0GBw8zgGiraYZpX7nj8E9nwkSn+w/7oNFM=
