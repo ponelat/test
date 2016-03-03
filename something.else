@@ -1,0 +1,12 @@
+# yaml!
+definitions:
+ ErrorModel:
+   type: object
+   properties:
+     msg:
+       type: string
+parameters:
+  query: 
+    type: string
+    name: query
+    in: query
