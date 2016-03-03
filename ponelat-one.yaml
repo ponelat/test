@@ -9,5 +9,3 @@ paths:
       responses: 
         200:  
           description: bob
-          schema:
-            $ref: "https://dev-api.swaggerhub.com/domains/ponelat/should-have-no-typos/1#/responses/GeneralError"
