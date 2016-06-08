@@ -1,0 +1,27 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2",
+    "title" : "An API",
+    "description" : "An API that uses Domains"
+  },
+  "paths" : {
+    "/greet" : {
+      "get" : {
+        "description" : "Returns a general greeting",
+        "summary" : "A simple greeting API",
+        "parameters" : [ {
+          "$ref" : "https://staging-api.swaggerhub.com/domains/josh/common/1/#/parameters/timeOfDay"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "General greeting",
+            "schema" : {
+              "$ref" : "https://staging-api.swaggerhub.com/domains/josh/common/1/#/definitions/Greeting"
+            }
+          }
+        }
+      }
+    }
+  }
+}
