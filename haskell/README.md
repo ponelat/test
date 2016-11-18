@@ -1,6 +1,6 @@
-# Auto-Generated Swagger Bindings to `OtherDocument`
+# Auto-Generated Swagger Bindings to `Uber`
 
-The library in `lib` provides auto-generated-from-Swagger bindings to the OtherDocument API.
+The library in `lib` provides auto-generated-from-Swagger bindings to the Uber API.
 
 ## Installation
 
@@ -11,46 +11,46 @@ Installation follows the standard approach to installing Stack-based projects.
 
 ## Main Interface
 
-The main interface to this library is in the `OtherDocument.API` module, which exports the OtherDocumentBackend type. The OtherDocumentBackend
+The main interface to this library is in the `Uber.API` module, which exports the UberBackend type. The UberBackend
 type can be used to create and define servers and clients for the API.
 
 ## Creating a Client
 
-A client can be created via the `createOtherDocumentClient` function, which, if provided with a hostname and a port, will generate
+A client can be created via the `createUberClient` function, which, if provided with a hostname and a port, will generate
 a client that can be used to access the API if it is being served at that hostname / port combination. For example, if
-`localhost:8080` is serving the OtherDocument API, you can write:
+`localhost:8080` is serving the Uber API, you can write:
 
 ```haskell
 {-# LANGUAGE RecordWildCards #-}
 
-import OtherDocument.API
+import Uber.API
 
 main :: IO ()
 main = do
-  OtherDocumentBackend{..} <- createOtherDocumentClient (ServerConfig "localhost" 8080)
-  -- Any OtherDocument API call can go here.
+  UberBackend{..} <- createUberClient (ServerConfig "localhost" 8080)
+  -- Any Uber API call can go here.
   return ()
 ```
 
 ## Creating a Server
 
-In order to create a server, you must use the `runOtherDocumentServer` function. However, you unlike the client, in which case you *got* a `OtherDocumentBackend`
-from the library, you must instead *provide* a `OtherDocumentBackend`. For example, if you have defined handler functions for all the
-functions in `OtherDocument.Handlers`, you can write:
+In order to create a server, you must use the `runUberServer` function. However, you unlike the client, in which case you *got* a `UberBackend`
+from the library, you must instead *provide* a `UberBackend`. For example, if you have defined handler functions for all the
+functions in `Uber.Handlers`, you can write:
 
 ```haskell
 {-# LANGUAGE RecordWildCards #-}
 
-import OtherDocument.API
+import Uber.API
 
--- A module you wrote yourself, containing all handlers needed for the OtherDocumentBackend type.
-import OtherDocument.Handlers
+-- A module you wrote yourself, containing all handlers needed for the UberBackend type.
+import Uber.Handlers
 
--- Run a OtherDocument server on localhost:8080
+-- Run a Uber server on localhost:8080
 main :: IO ()
 main = do
-  let server = OtherDocumentBackend{..}
-  runOtherDocumentServer (ServerConfig "localhost" 8080) server
+  let server = UberBackend{..}
+  runUberServer (ServerConfig "localhost" 8080) server
 ```
 
 You could use `optparse-applicative` or a similar library to read the host and port from command-line arguments:
@@ -59,7 +59,7 @@ You could use `optparse-applicative` or a similar library to read the host and p
 
 module Main (main) where
 
-import OtherDocument.API (runOtherDocumentServer, OtherDocumentBackend(..), ServerConfig(..))
+import Uber.API (runUberServer, UberBackend(..), ServerConfig(..))
 
 import Control.Applicative ((<$>), (<*>))
 import Options.Applicative (execParser, option, str, auto, long, metavar, help)
@@ -67,7 +67,7 @@ import Options.Applicative (execParser, option, str, auto, long, metavar, help)
 main :: IO ()
 main = do
   config <- parseArguments
-  runOtherDocumentServer config OtherDocumentBackend{}
+  runUberServer config UberBackend{}
 
 -- | Parse host and port from the command line arguments.
 parseArguments :: IO ServerConfig
