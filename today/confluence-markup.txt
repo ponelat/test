@@ -1,0 +1,114 @@
+h1. Base Document This is the base document ( currently being edited )
+
+*Version:* base
+
+----
+
+{toc:printable=true|style=square|minLevel=2|maxLevel=3|type=list|outline=false|include=.*}
+
+h2. Endpoints
+
+    h3. addCow
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /cows
+    {code}
+    *Summary:* Add a cow
+    *Description:* Add a cow to our collection of animals
+
+
+    h4. Parameters
+
+
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     Cow added
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Cow added"
+}
+        {code}
+    ----
+
+    h3. catsGet
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /cats
+    {code}
+    *Summary:* Just a cat
+    *Description:* Just a cat
+
+
+    h4. Parameters
+
+
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     Just a cat resopnse
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Just a cat resopnse"
+}
+        {code}
+    ----
+
+    h3. addDog
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /dogs
+    {code}
+    *Summary:* Add a new dog to the store
+    *Description:* 
+
+
+    h4. Parameters
+
+
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 405
+        *Message:*     Invalid input
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Invalid input"
+}
+        {code}
+    ----
+
+h2. Models
+
