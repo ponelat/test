@@ -40,29 +40,15 @@ var routes = Routes{
 	Route{
 		"Index",
 		"GET",
-		"/acme/another-pet/base/",
+		"/",
 		Index,
 	},
 
 	Route{
-		"AddCow",
-		"POST",
-		"/acme/another-pet/base/cows",
-		AddCow,
-	},
-
-	Route{
-		"CatsGet",
+		"StatusStatusGet",
 		"GET",
-		"/acme/another-pet/base/cats",
-		CatsGet,
-	},
-
-	Route{
-		"AddDog",
-		"POST",
-		"/acme/another-pet/base/dogs",
-		AddDog,
+		"/status/{status}",
+		StatusStatusGet,
 	},
 
 }
