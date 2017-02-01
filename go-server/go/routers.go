@@ -45,10 +45,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"StatusStatusGet",
+		"V1Get",
 		"GET",
-		"/status/{status}",
-		StatusStatusGet,
+		"/v1",
+		V1Get,
 	},
 
 }
