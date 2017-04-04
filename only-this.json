@@ -1,0 +1,338 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is an online swagger codegen server. You can find out more at https://github.com/swagger-api/swagger-codegen or on [irc.freenode.net, #swagger](http://swagger.io/irc/).",
+    "version" : "2.1.7-SNAPSHOT",
+    "title" : "REST API for Oracle Service Cloud - February 2017",
+    "termsOfService" : "http://swagger.io/terms/",
+    "contact" : {
+      "name" : "apiteam@swagger.io"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath" : "/api",
+  "host" : "mongo-dev.swaggerhub.com:6004",
+  "tags" : [ {
+    "name" : "gen"
+  }, {
+    "name" : "clients"
+  }, {
+    "name" : "servers"
+  } ],
+  "paths" : {
+    "/services/rest/connect/latest/channelTypes/{id}" : {
+      "get" : {
+        "summary" : "Retrieve an instance of channelTypes",
+        "description" : "",
+        "operationId" : "get /services/rest/connect/latest/channelTypes/{id}",
+        "responses" : {
+          "default" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/channelTypes"
+            }
+          }
+        },
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Primary key identifier",
+          "type" : "integer",
+          "required" : true
+        } ],
+        "x-relation" : [ "self" ],
+        "produces" : [ "application/json" ],
+        "tags" : [ "channelTypes" ],
+        "x-internal-id" : "services-rest-connect-latest-channelTypes-{id}-get"
+      }
+    },
+    "/services/rest/connect/v1.3/channelTypes" : {
+      "get" : {
+        "summary" : "Retrieve collection of channelTypes",
+        "description" : "",
+        "operationId" : "get /services/rest/connect/v1.3/channelTypes",
+        "responses" : {
+          "default" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/channelTypes-collection"
+            }
+          }
+        },
+        "parameters" : [ {
+          "name" : "orderBy",
+          "in" : "query",
+          "type" : "string",
+          "description" : "Returns the count of elements as the given order. The value is a comma delimited string. Each token in the string is the name of the field, optionally followed by asc or desc."
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "type" : "string",
+          "description" : "Restrict which fields shall be returned. The value is a comma delimited string and each token is a field name"
+        }, {
+          "name" : "q",
+          "in" : "query",
+          "type" : "string",
+          "description" : "Query parameter that allows searching by providing ROQL WHERE clause filtering"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "type" : "integer",
+          "description" : "The requested page size, which limits the number of elements the collection should max return"
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "type" : "integer",
+          "description" : "The offset of the page. By default, offset is 0, which means first page will be returned."
+        }, {
+          "name" : "totalResults",
+          "in" : "query",
+          "type" : "boolean",
+          "description" : "Indicates whether or not to calculate the totalResults property. By default, totalResults is not calculated."
+        } ],
+        "x-relation" : [ "self" ],
+        "consumes" : [ "application/x-www-form-urlencoded" ],
+        "produces" : [ "application/json;type=collection" ],
+        "tags" : [ "channelTypes" ],
+        "x-internal-id" : "services-rest-connect-v1.3-channelTypes-get"
+      }
+    },
+    "/gen/clients" : {
+      "get" : {
+        "tags" : [ "clients" ],
+        "summary" : "Gets languages supported by the client generator",
+        "description" : "",
+        "operationId" : "clientOptions",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gen/clients/{language}" : {
+      "get" : {
+        "tags" : [ "clients" ],
+        "summary" : "Returns options for a client library",
+        "description" : "",
+        "operationId" : "getClientOptions",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "language",
+          "in" : "path",
+          "description" : "The target language for the client library",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "$ref" : "#/definitions/CliOption"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "clients" ],
+        "summary" : "Generates and downloads a client library",
+        "description" : "Accepts a `GeneratorInput` options map for spec location and generation options",
+        "operationId" : "generateClient",
+        "x-swagger-router-controller" : "io.swagger.generator.resource.SwaggerResource",
+        "produces" : [ "application/octet-stream" ],
+        "parameters" : [ {
+          "name" : "language",
+          "in" : "path",
+          "description" : "The target language for the client library",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Configuration for building the client library",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GeneratorInput"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string",
+              "format" : "byte"
+            }
+          }
+        }
+      }
+    },
+    "/gen/servers" : {
+      "get" : {
+        "tags" : [ "servers" ],
+        "summary" : "Gets languages supported by the server generator",
+        "description" : "",
+        "operationId" : "serverOptions",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gen/servers/{framework}" : {
+      "get" : {
+        "tags" : [ "servers" ],
+        "summary" : "Returns options for a server framework",
+        "description" : "",
+        "operationId" : "getServerOptions",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "framework",
+          "in" : "path",
+          "description" : "The target language for the server framework",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "aspnet5", "haskell-servant", "inflector", "jaxrs", "jaxrs-cxf", "jaxrs-resteasy", "nodejs-server", "python-flask", "scalatra", "silex-PHP", "sinatra", "slim", "spring-mvc" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "$ref" : "#/definitions/CliOption"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "servers" ],
+        "summary" : "Generates a server library",
+        "description" : "Accepts a `GeneratorInput` options map for spec location and generation options.\n",
+        "operationId" : "generateServerForLanguage",
+        "x-swagger-router-controller" : "io.swagger.generator.resource.SwaggerResource",
+        "produces" : [ "application/octet-stream" ],
+        "parameters" : [ {
+          "name" : "framework",
+          "in" : "path",
+          "description" : "framework",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "parameters",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GeneratorInput"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string",
+              "format" : "byte"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "CliOption" : {
+      "type" : "object",
+      "properties" : {
+        "optionName" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "description" : "Data type is based on the types supported by the JSON-Schema"
+        },
+        "enum" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        },
+        "default" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AuthorizationValue" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "keyName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GeneratorInput" : {
+      "type" : "object",
+      "properties" : {
+        "spec" : {
+          "type" : "object"
+        },
+        "options" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        },
+        "swaggerUrl" : {
+          "type" : "string",
+          "example" : "http://petstore.swagger.io/v2/swagger.json"
+        },
+        "authorizationValue" : {
+          "$ref" : "#/definitions/AuthorizationValue"
+        },
+        "securityDefinition" : {
+          "$ref" : "#/definitions/SecuritySchemeDefinition"
+        }
+      }
+    },
+    "SecuritySchemeDefinition" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
