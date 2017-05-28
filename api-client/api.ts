@@ -48,6 +48,12 @@ export class BaseAPI {
     }
 }
 
+export interface UserData {
+    "login"?: string;
+    "id"?: number;
+    "url"?: string;
+}
+
 
 
 /**
