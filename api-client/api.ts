@@ -96,7 +96,7 @@ export const GitHubApiFp = {
      * Get user data
      * @param username The username, we want the data from.
      */
-    getUser(params: { username: string;  }): (fetch: FetchAPI, basePath?: string) => Promise<UserData> {
+    getUser(params: { username: string;  }): (fetch: FetchAPI, basePath?: string) => Promise<any> {
         const fetchArgs = GitHubApiFetchParamCreactor.getUser(params);
         return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
             return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
