@@ -53,6 +53,7 @@ export interface UserData {
     "id"?: number;
     "url"?: string;
     "location"?: string;
+    "name"?: string;
 }
 
 
