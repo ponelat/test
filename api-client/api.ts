@@ -48,6 +48,12 @@ export class BaseAPI {
     }
 }
 
+export interface InlineResponse200 {
+    "login"?: string;
+    "id"?: number;
+    "url"?: string;
+}
+
 
 
 /**
@@ -89,12 +95,12 @@ export const GitHubApiFp = {
      * Get user data
      * @param username The username, we want the data from.
      */
-    getUser(params: { username: string;  }): (fetch: FetchAPI, basePath?: string) => Promise<any> {
+    getUser(params: { username: string;  }): (fetch: FetchAPI, basePath?: string) => Promise<InlineResponse200> {
         const fetchArgs = GitHubApiFetchParamCreactor.getUser(params);
         return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
             return fetch(basePath + fetchArgs.url, fetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
