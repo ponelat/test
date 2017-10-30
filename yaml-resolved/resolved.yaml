@@ -52,7 +52,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/InventoryItem"
+              $ref: "#/definitions/ErrorModel"
         400:
           description: "bad input parameter"
     post:
@@ -115,3 +115,13 @@ definitions:
       phone:
         type: "string"
         example: "408-867-5309"
+  ErrorModel:
+    required:
+    - "code"
+    - "message"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
