@@ -1,0 +1,14 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "asdf",
+    "description" : "ffffff",
+    "version" : "1"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.dev.swaggerhub.com/enterprisey/asdfasdfdfdd/1",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "paths" : { },
+  "components" : { }
+}
