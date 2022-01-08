@@ -1,0 +1,192 @@
+openapi: 3.0.3
+info:
+  title: AdventOfCode (2021) API.
+  description: "AdventOfCode (2021) API.\n\n**WARNING**: Please don't abuse the AdventOfCode.com's\
+    \ APIs.\n> Make very few requests, only as needed.\n\nYou'll need to grab your\
+    \ cookie session from the browser, to use the API.\n\n**NOTE**: This was reverse\
+    \ engineered which appears to be fine, but if it breaks any terms... please let\
+    \ me know and I'll take it down.\n"
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/ponelat/adventofcode/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://adventofcode.com
+  description: "The main API, ie: production.\n \n  \n"
+security:
+- cookieSession: []
+paths:
+  /{year}/day/{day}/input:
+    get:
+      tags:
+      - Day
+      summary: Get the input text for the puzzle.
+      description: |
+        Get the input text for the puzzle.
+      operationId: getInput
+      parameters:
+      - name: day
+        in: path
+        description: "The day of advent, which is the day in December up till xmas,\
+          \ ie: 1-25.\n"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maximum: 25
+          minimum: 1
+          type: number
+      - name: year
+        in: path
+        description: "Year. AdventOfCode started in 2015, which is the earliest acceptable\
+          \ value.\n"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 2015
+          type: number
+          default: 2021
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: |
+                  100
+                  200
+                  300
+                  400
+                default: Usually line delimited.
+        "400":
+          description: |
+            Missing cookie authentication
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Puzzle inputs differ by user.  Please log in to get your
+                  puzzle input.
+  /{year}/day/{day}/answer:
+    post:
+      tags:
+      - Day
+      summary: Add answer to the day's challenge.
+      operationId: answer
+      parameters:
+      - name: day
+        in: path
+        description: "The day of advent, which is the day in December up till xmas,\
+          \ ie: 1-25.\n"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maximum: 25
+          minimum: 1
+          type: number
+      - name: year
+        in: path
+        description: "Year. AdventOfCode started in 2015, which is the earliest acceptable\
+          \ value.\n"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 2015
+          type: number
+          default: 2021
+      requestBody:
+        description: "The answer and the level (ie: first challenge or second part\
+          \ of challenge, 1 or 2).\n"
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/day_answer_body'
+      responses:
+        "400":
+          description: |
+            Missing cookie authentication
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Puzzle inputs differ by user.  Please log in to get your
+                  puzzle input.
+        default:
+          description: "HTML page reponse.\n\nYou'll need to parse the HTML text to\
+            \ know if the answer was accepted or not.\n\n## Typical responses:\n\n\
+            ### Already solved\n```html\n<!-- Other chunks left out for brevity -->\n\
+            <main>\n<article><p>You don't seem to be solving the right level.  Did\
+            \ you already complete it? <a href=\"/2021/day/1\">[Return to Day 1]</a></p></article>\n\
+            </main>\n```\n\n### Incorrect answer\n```html\n<main>\n<article><p>That's\
+            \ not the right answer.  If you're stuck, make sure you're using the full\
+            \ input data; there are also some general tips on the <a href=\"/2021/about\"\
+            >about page</a>, or you can ask for hints on the <a href=\"https://www.reddit.com/r/adventofcode/\"\
+            \ target=\"_blank\">subreddit</a>.  Please wait one minute before trying\
+            \ again. (You guessed <span style=\"white-space:nowrap;\"><code>josh</code>.)</span>\
+            \ <a href=\"/2021/day/2\">[Return to Day 2]</a></p></article>\n</main>\n\
+            ```\n"
+components:
+  schemas:
+    day_answer_body:
+      required:
+      - answer
+      - level
+      type: object
+      properties:
+        level:
+          type: number
+          description: Level refers to whether it's the first or second part of the
+            challange.
+          enum:
+          - 1
+          - 2
+        answer:
+          type: string
+          description: Your answer. Typically a number but can be a string too.
+  responses:
+    MissingCookie:
+      description: |
+        Missing cookie authentication
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Puzzle inputs differ by user.  Please log in to get your puzzle
+              input.
+  parameters:
+    day:
+      name: day
+      in: path
+      description: "The day of advent, which is the day in December up till xmas,\
+        \ ie: 1-25.\n"
+      required: true
+      style: simple
+      explode: false
+      schema:
+        maximum: 25
+        minimum: 1
+        type: number
+    year:
+      name: year
+      in: path
+      description: "Year. AdventOfCode started in 2015, which is the earliest acceptable\
+        \ value.\n"
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 2015
+        type: number
+        default: 2021
+  securitySchemes:
+    cookieSession:
+      type: apiKey
+      description: "You'll need to login to AdventOfCode.com and from the Network\
+        \ tab of your browser, copy the value side of `session=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;`\
+        \ in the `Cookie` header. The value will just be the x's, not including the\
+        \ `session=` or the ending semicolon.\n"
+      name: session
+      in: cookie
