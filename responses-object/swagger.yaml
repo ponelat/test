@@ -1,0 +1,102 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Swagger Petstore",
+    "description" : "This is a sample Petstore server.  You can find\nout more about Swagger at\n[http://swagger.io](http://swagger.io) or on\n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n",
+    "termsOfService" : "http://swagger.io/terms/",
+    "contact" : {
+      "email" : "apiteam@swagger.io"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/plett/petstore-with-ref-to-pathitem/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "paths" : {
+    "/foo" : {
+      "post" : {
+        "tags" : [ "pet" ],
+        "summary" : "Update an existing pet",
+        "operationId" : "updatePet",
+        "responses" : {
+          "400" : {
+            "description" : "An error occurred",
+            "headers" : {
+              "X-RateLimit-Limit" : {
+                "$ref" : "#/components/headers/X-RateLimit-Limit"
+              },
+              "X-RateLimit-Remaining" : {
+                "$ref" : "#/components/headers/X-RateLimit-Remaining"
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ErrorModel" : {
+        "required" : [ "code", "message" ],
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "responses" : {
+      "GeneralError" : {
+        "description" : "An error occurred",
+        "headers" : {
+          "X-RateLimit-Limit" : {
+            "$ref" : "#/components/headers/X-RateLimit-Limit"
+          },
+          "X-RateLimit-Remaining" : {
+            "$ref" : "#/components/headers/X-RateLimit-Remaining"
+          }
+        },
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ErrorModel"
+            }
+          }
+        }
+      }
+    },
+    "headers" : {
+      "X-RateLimit-Limit" : {
+        "description" : "Request limit per hour",
+        "schema" : {
+          "type" : "integer"
+        },
+        "example" : 100
+      },
+      "X-RateLimit-Remaining" : {
+        "description" : "Remaining requests for the hour",
+        "schema" : {
+          "type" : "integer"
+        },
+        "example" : 94
+      }
+    }
+  }
+}
