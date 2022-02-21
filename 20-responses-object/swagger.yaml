@@ -11,6 +11,3 @@ paths:
       responses:
         "400":
           description: General Error
-      responsesObject:
-        "400":
-          description: General Error
