@@ -1,10 +1,12 @@
 openapi: 3.0.0
 info:
   title: Test long description
-  description: "By passing in the appropriate options, you can search for available\
-    \ inventory in the system By passing in the appropriate options, you can search\
-    \ for available inventory in the system By passing in the appropriate options,\
-    \ you can search for available inventory in the system"
+  description: "Lorem ipsum dolor sit amet consectetur adipiscing elit, ligula integer\
+    \ tempus proin mattis fusce. Proin vivamus phasellus tincidunt sapien inceptos\
+    \ viverra turpis vehicula neque sociosqu, nostra rhoncus sagittis cursus dapibus\
+    \ dignissim ornare consequat curabitur, imperdiet lacus facilisis ridiculus ante\
+    \ molestie convallis accumsan donec. Laoreet pulvinar feugiat velit proin rhoncus\
+    \ dis ullamcorper, curae nullam at penatibus tempor quis."
   version: 1.0.0
 servers:
 - url: /
