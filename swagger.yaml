@@ -1,0 +1,12 @@
+openapi: 3.0.0
+info:
+  title: Test long description
+  description: "By passing in the appropriate options, you can search for available\
+    \ inventory in the system By passing in the appropriate options, you can search\
+    \ for available inventory in the system By passing in the appropriate options,\
+    \ you can search for available inventory in the system"
+  version: 1.0.0
+servers:
+- url: /
+paths: {}
+components: {}
