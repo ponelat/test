@@ -1,0 +1,15 @@
+{
+  "name": "home-iot-api",
+  "version": "1.0.0",
+  "description": "The API for the EatBacon IOT project",
+  "main": "index.js",
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "js-yaml": "^3.3.0",
+    "swagger-tools": "0.10.1"
+  }
+}
